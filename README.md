@@ -1,7 +1,6 @@
 ![Main-Banner](main-scr.jpg)
 # Clicx: Escape The Jungle
 
-***
 Clicxl is a dodge-the-obstacle type game made with **pygame** a python module which allows to create 2D 3D games.
 
 ⚠️ Clicxl has been designed recently and this will be the game first versions. You may run into minor graphical issues or crashes or musical errors while using it. *Please Cooperate*.
