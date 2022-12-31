@@ -1,4 +1,4 @@
-![Main-Banner](main-scr.jpg)
+![Main-Banner](Assets/main-scr.jpg)
 # Clicx: Escape The Jungle
 
 ***
