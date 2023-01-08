@@ -1,15 +1,29 @@
 import pygame
 from sys import exit
-from random import randint,choice,choices
+from random import randint,choice
 pygame.init()
 screen = pygame.display.set_mode((1366,768))
+pygame.display.set_caption("Clicxl : Escape The Jungle")
 font  = pygame.font.Font('Assets/font/MinecraftFive-Bold.ttf',50)
 clock = pygame.time.Clock()
-icon  = pygame.image.load('Assets/player/player_default.png').convert_alpha()
-pygame.display.set_icon(icon) 
+font1  = pygame.font.Font('Assets/font/MinecraftFive-Bold.ttf',30)
+icon  = pygame.image.load('Assets/icon.png').convert_alpha()
+pygame.display.set_icon(icon)
 
-global i
+
 i = 0
+
+
+
+#Game Difficulty 
+# def game_diff(scr):
+#   diff_var = 15
+#   diff = 1500
+#   if scr ==  diff_var : 
+#     diff -= 1000
+#     diff_var += 5
+#   return diff 
+
 
 #Score
 def dis_score():
@@ -117,7 +131,7 @@ runner_run_3 = pygame.transform.scale(runner_run_3,(14*10,35*5))
 runner_run = [runner_run_1,runner_run_2,runner_run_3]
 runner_index = 0
 runner_jump = pygame.image.load('Assets/player/player_jump.png').convert_alpha()
-runner_jump = pygame.transform.scale(runner_jump,(14*10,35*5.5))
+runner_jump = pygame.transform.scale(runner_jump,(14*10,35*5.75))
 runner_surf = runner_run[runner_index]
 runner_rect = runner_surf.get_rect(midbottom=(200,580))
 player_grav = 0
@@ -127,20 +141,25 @@ player_grav = 0
 end_surf = pygame.image.load('Assets/endscreen.png').convert_alpha()
 end_rect = end_surf.get_rect(topleft=(0,0))
 
-#Timer
-obstrical_timer = pygame.USEREVENT + 1
-pygame.time.set_timer(obstrical_timer,2000) # Main Switch For Enemy
+
 
 bird_timer = pygame.USEREVENT + 2
 pygame.time.set_timer(bird_timer,180)
 
+#Timer
+obstrical_timer = pygame.USEREVENT + 1
+pygame.time.set_timer(obstrical_timer,1400) # Main Switch For Enemy
 
 
 while True:
   for event in pygame.event.get(): 
     if event.type == pygame.QUIT:
-      pygame.QUIT
-      exit()
+      import credit
+    if event.type == pygame.KEYDOWN :
+      if event.key == pygame.K_ESCAPE:
+        import credit 
+
+
 
   #Gravity Cont
     if game_state == True: 
@@ -157,6 +176,7 @@ while True:
           player_jump_sound = pygame.mixer.Sound('Assets/audio/jump.mp3')
           player_jump_sound.set_volume(0.25)
           player_jump_sound.play()
+
 
       #Game Mechanics     
       if event.type == obstrical_timer:
@@ -192,12 +212,12 @@ while True:
     draw_grd()
     # screen.blit(ground_1,(i,550))
     # screen.blit(ground_1,(width+i,550))
-    
+
 
     if i <= -1366:
-      screen.blit(Par_bg_img,(1366+i,-20))
+      screen.blit(Par_bg_img,(1366+i,0))
       screen.blit(ground_1,(1366+i,550))
-      i = -4
+      i = 0
 
     i -= 4
 
@@ -213,8 +233,6 @@ while True:
     # Obstacle Movement
 
     obstr_rect_list =obst_movement(obstr_rect_list)  
-
-
 
     #Collisions
     game_state = collisions(runner_rect,obstr_rect_list)
@@ -243,7 +261,7 @@ while True:
 
     death= pygame.mixer.Sound('Assets/audio/death.mp3')
     death.set_volume(0.25)
-    death.play(1)
+    death.play(0)
     i = 0
 
 

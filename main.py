@@ -1,21 +1,29 @@
 import pygame
-from PIL import Image
 from sys import exit
-import main_menu,game
+
+
 pygame.init()
 screen = pygame.display.set_mode((1366,768))
+pygame.display.set_caption("Clicxl : Escape The Jungle")
 font  = pygame.font.Font('Assets/font/MinecraftFive-Bold.ttf',50)
 clock = pygame.time.Clock()
-
-icon  = pygame.image.load('Assets/player/player_default.png').convert_alpha()
+font1  = pygame.font.Font('Assets/font/MinecraftFive-Bold.ttf',30)
+icon  = pygame.image.load('Assets/icon.png').convert_alpha()
 pygame.display.set_icon(icon)
+
+
+
 
 while True:
   for event in pygame.event.get(): 
     if event.type == pygame.QUIT:
-      pygame.QUIT 
-      exit()
-  main_menu() 
+      import credit
+    if event.type == pygame.KEYDOWN :
+      if event.key == pygame.K_ESCAPE:
+        import credit  
+  import loading
+
+
 
   pygame.display.update()
   clock.tick(60)
